@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using Utilities;
 
 namespace WindowsFormsApplication13
@@ -23,6 +24,8 @@ namespace WindowsFormsApplication13
         bool isCPactive = true;
         //   Переменные для перетаскивания формы без рамок
         int for_dragging_X = 0, for_dragging_Y = 0;
+        int handle;
+        L2Watcher watcher;
         Form4 f4 = new Form4();
 
         globalKeyboardHook gkh;
@@ -39,6 +42,53 @@ namespace WindowsFormsApplication13
             textBox2.Text = "7000";
             textBox3.Text = "2000";
             textBox4.Text = "500";
+            watcher = new L2Watcher("L2.bin");
+            watcher.Add += new L2Watcher.WatcherHandler(onProcessesAdd);
+            watcher.Remove += new L2Watcher.WatcherHandler(onProcessesRemove);
+            
+        }
+
+        private void Form2_Shown(object sender, EventArgs e)
+        {
+            updateContextMenu();
+        }
+
+        public void onProcessesAdd(object sender, int updated_item)
+        {
+            updateContextMenu();
+        }
+
+        public void onProcessesRemove(object sender, int updated_item)
+        {
+            updateContextMenu();
+            if (this.handle == updated_item)
+            {
+                labelProcessName.ForeColor = Color.Red;
+            }
+        }
+
+        public void updateContextMenu()
+        {
+            this.Invoke(new Action(() => { 
+                contextMenuStrip1.Items.Clear(); 
+            }));
+            if (watcher.processes.Count > 0)
+            {
+                foreach (Process process in watcher.processes.Values)
+                {
+                    this.Invoke(new Action(() => { 
+                        ToolStripItem item = contextMenuStrip1.Items.Add(process.StartTime.ToString(), Properties.Resources.Lineage_II, new EventHandler(onContextClicked));
+                        item.Tag = process.Id;
+                    }));
+                }
+            }
+            else
+            {
+                this.Invoke(new Action(() => {
+                    ToolStripItem item = contextMenuStrip1.Items.Add("Запущенных процессов не найдено");
+                    item.Enabled = false;
+                }));
+            }
         }
        
         private void btnTray_Click(object sender, EventArgs e)
@@ -271,190 +321,79 @@ namespace WindowsFormsApplication13
         bool c;
         private void HP_Tick(object sender, EventArgs e)
         {
-            if (textBox5.Text[0] == 'F')
-            {
-                if (textBox5.Text.Length == 2)
-                {
-                    if (textBox5.Text[1] == '1') SendKeys.Send("{F1}");
-                    if (textBox5.Text[1] == '2') SendKeys.Send("{F2}");
-                    if (textBox5.Text[1] == '3') SendKeys.Send("{F3}");
-                    if (textBox5.Text[1] == '4') SendKeys.Send("{F4}");
-                    if (textBox5.Text[1] == '5') SendKeys.Send("{F5}");
-                    if (textBox5.Text[1] == '6') SendKeys.Send("{F6}");
-                    if (textBox5.Text[1] == '7') SendKeys.Send("{F7}");
-                    if (textBox5.Text[1] == '8') SendKeys.Send("{F8}");
-                    if (textBox5.Text[1] == '9') SendKeys.Send("{F9}");
-                }
-                if (textBox5.Text.Length == 3)
-                {
-                    if (textBox5.Text[2] == '0') SendKeys.Send("{F10}");
-                    if (textBox5.Text[2] == '1') SendKeys.Send("{F11}");
-                    if (textBox5.Text[2] == '2') SendKeys.Send("{F12}");
-                }
-            }
-            c = int.TryParse(textBox5.Text, out forTry);
-            if (c)
-            {
-                if (textBox5.Text.Length == 1)
-                {
-                    if (textBox5.Text[0] == '1') SendKeys.Send("{1}");
-                    if (textBox5.Text[0] == '2') SendKeys.Send("{2}");
-                    if (textBox5.Text[0] == '3') SendKeys.Send("{3}");
-                    if (textBox5.Text[0] == '4') SendKeys.Send("{4}");
-                    if (textBox5.Text[0] == '5') SendKeys.Send("{5}");
-                    if (textBox5.Text[0] == '6') SendKeys.Send("{6}");
-                    if (textBox5.Text[0] == '7') SendKeys.Send("{7}");
-                    if (textBox5.Text[0] == '8') SendKeys.Send("{8}");
-                    if (textBox5.Text[0] == '9') SendKeys.Send("{9}");
-                }
-                if (textBox5.Text.Length == 2)
-                {
-                    if (textBox5.Text[1] == '0') SendKeys.Send("{0}");
-                    if (textBox5.Text[1] == '1') SendKeys.Send("{-}");
-                    if (textBox5.Text[1] == '2') SendKeys.Send("{=}");
-                }
-            }
-            
+            Tick(textBox5.Text);
         }
 
         private void MP_Tick(object sender, EventArgs e)
         {
-            if (textBox6.Text[0] == 'F')
-            {
-                if (textBox6.Text.Length == 2)
-                {
-                    if (textBox6.Text[1] == '1') SendKeys.Send("{F1}");
-                    if (textBox6.Text[1] == '2') SendKeys.Send("{F2}");
-                    if (textBox6.Text[1] == '3') SendKeys.Send("{F3}");
-                    if (textBox6.Text[1] == '4') SendKeys.Send("{F4}");
-                    if (textBox6.Text[1] == '5') SendKeys.Send("{F5}");
-                    if (textBox6.Text[1] == '6') SendKeys.Send("{F6}");
-                    if (textBox6.Text[1] == '7') SendKeys.Send("{F7}");
-                    if (textBox6.Text[1] == '8') SendKeys.Send("{F8}");
-                    if (textBox6.Text[1] == '9') SendKeys.Send("{F9}");
-                }
-                if (textBox6.Text.Length == 3)
-                {
-                    if (textBox6.Text[2] == '0') SendKeys.Send("{F10}");
-                    if (textBox6.Text[2] == '1') SendKeys.Send("{F11}");
-                    if (textBox6.Text[2] == '2') SendKeys.Send("{F12}");
-                }
-            }
-            c = int.TryParse(textBox6.Text, out forTry);
-            if (c)
-            {
-                if (textBox6.Text.Length == 1)
-                {
-                    if (textBox6.Text[0] == '1') SendKeys.Send("{1}");
-                    if (textBox6.Text[0] == '2') SendKeys.Send("{2}");
-                    if (textBox6.Text[0] == '3') SendKeys.Send("{3}");
-                    if (textBox6.Text[0] == '4') SendKeys.Send("{4}");
-                    if (textBox6.Text[0] == '5') SendKeys.Send("{5}");
-                    if (textBox6.Text[0] == '6') SendKeys.Send("{6}");
-                    if (textBox6.Text[0] == '7') SendKeys.Send("{7}");
-                    if (textBox6.Text[0] == '8') SendKeys.Send("{8}");
-                    if (textBox6.Text[0] == '9') SendKeys.Send("{9}");
-                }
-                if (textBox6.Text.Length == 2)
-                {
-                    if (textBox6.Text[1] == '0') SendKeys.Send("{0}");
-                    if (textBox6.Text[1] == '1') SendKeys.Send("{-}");
-                    if (textBox6.Text[1] == '2') SendKeys.Send("{=}");
-                }
-            }
+            Tick(textBox6.Text);
         }
 
         private void GCP_Tick(object sender, EventArgs e)
         {
-            if (textBox7.Text[0] == 'F')
-            {
-                if (textBox7.Text.Length == 2)
-                {
-                    if (textBox7.Text[1] == '1') SendKeys.Send("{F1}");
-                    if (textBox7.Text[1] == '2') SendKeys.Send("{F2}");
-                    if (textBox7.Text[1] == '3') SendKeys.Send("{F3}");
-                    if (textBox7.Text[1] == '4') SendKeys.Send("{F4}");
-                    if (textBox7.Text[1] == '5') SendKeys.Send("{F5}");
-                    if (textBox7.Text[1] == '6') SendKeys.Send("{F6}");
-                    if (textBox7.Text[1] == '7') SendKeys.Send("{F7}");
-                    if (textBox7.Text[1] == '8') SendKeys.Send("{F8}");
-                    if (textBox7.Text[1] == '9') SendKeys.Send("{F9}");
-                }
-                if (textBox7.Text.Length == 3)
-                {
-                    if (textBox7.Text[2] == '0') SendKeys.Send("{F10}");
-                    if (textBox7.Text[2] == '1') SendKeys.Send("{F11}");
-                    if (textBox7.Text[2] == '2') SendKeys.Send("{F12}");
-                }
-            }
-            c = int.TryParse(textBox7.Text, out forTry);
-            if (c)
-            {
-                if (textBox7.Text.Length == 1)
-                {
-                    if (textBox7.Text[0] == '1') SendKeys.Send("{1}");
-                    if (textBox7.Text[0] == '2') SendKeys.Send("{2}");
-                    if (textBox7.Text[0] == '3') SendKeys.Send("{3}");
-                    if (textBox7.Text[0] == '4') SendKeys.Send("{4}");
-                    if (textBox7.Text[0] == '5') SendKeys.Send("{5}");
-                    if (textBox7.Text[0] == '6') SendKeys.Send("{6}");
-                    if (textBox7.Text[0] == '7') SendKeys.Send("{7}");
-                    if (textBox7.Text[0] == '8') SendKeys.Send("{8}");
-                    if (textBox7.Text[0] == '9') SendKeys.Send("{9}");
-                }
-                if (textBox7.Text.Length == 2)
-                {
-                    if (textBox7.Text[1] == '0') SendKeys.Send("{0}");
-                    if (textBox7.Text[1] == '1') SendKeys.Send("{-}");
-                    if (textBox7.Text[1] == '2') SendKeys.Send("{=}");
-                }
-            }
+            Tick(textBox7.Text);
         }
 
         private void CP_Tick(object sender, EventArgs e)
         {
-            if (textBox8.Text[0] == 'F')
+            Tick(textBox8.Text);
+        }
+
+        private void Tick(string key)
+        {
+            if (key[0] == 'F')
             {
-                if (textBox8.Text.Length == 2)
+                if (key.Length == 2)
                 {
-                    if (textBox8.Text[1] == '1') SendKeys.Send("{F1}");
-                    if (textBox8.Text[1] == '2') SendKeys.Send("{F2}");
-                    if (textBox8.Text[1] == '3') SendKeys.Send("{F3}");
-                    if (textBox8.Text[1] == '4') SendKeys.Send("{F4}");
-                    if (textBox8.Text[1] == '5') SendKeys.Send("{F5}");
-                    if (textBox8.Text[1] == '6') SendKeys.Send("{F6}");
-                    if (textBox8.Text[1] == '7') SendKeys.Send("{F7}");
-                    if (textBox8.Text[1] == '8') SendKeys.Send("{F8}");
-                    if (textBox8.Text[1] == '9') SendKeys.Send("{F9}");
+                    if (key[1] == '1') this.SendKey("F1");
+                    if (key[1] == '2') this.SendKey("F2");
+                    if (key[1] == '3') this.SendKey("F3");
+                    if (key[1] == '4') this.SendKey("F4");
+                    if (key[1] == '5') this.SendKey("F5");
+                    if (key[1] == '6') this.SendKey("F6");
+                    if (key[1] == '7') this.SendKey("F7");
+                    if (key[1] == '8') this.SendKey("F8");
+                    if (key[1] == '9') this.SendKey("F9");
                 }
-                if (textBox5.Text.Length == 3)
+                if (key.Length == 3)
                 {
-                    if (textBox8.Text[2] == '0') SendKeys.Send("{F10}");
-                    if (textBox8.Text[2] == '1') SendKeys.Send("{F11}");
-                    if (textBox8.Text[2] == '2') SendKeys.Send("{F12}");
+                    if (key[2] == '0') this.SendKey("F10");
+                    if (key[2] == '1') this.SendKey("F11");
+                    if (key[2] == '2') this.SendKey("F12");
                 }
             }
-            c = int.TryParse(textBox8.Text, out forTry);
+            c = int.TryParse(key, out forTry);
             if (c)
             {
-                if (textBox8.Text.Length == 1)
+                if (key.Length == 1)
                 {
-                    if (textBox8.Text[0] == '1') SendKeys.Send("{1}");
-                    if (textBox8.Text[0] == '2') SendKeys.Send("{2}");
-                    if (textBox8.Text[0] == '3') SendKeys.Send("{3}");
-                    if (textBox8.Text[0] == '4') SendKeys.Send("{4}");
-                    if (textBox8.Text[0] == '5') SendKeys.Send("{5}");
-                    if (textBox8.Text[0] == '6') SendKeys.Send("{6}");
-                    if (textBox8.Text[0] == '7') SendKeys.Send("{7}");
-                    if (textBox8.Text[0] == '8') SendKeys.Send("{8}");
-                    if (textBox8.Text[0] == '9') SendKeys.Send("{9}");
+                    if (key[0] == '1') this.SendKey("1");
+                    if (key[0] == '2') this.SendKey("2");
+                    if (key[0] == '3') this.SendKey("3");
+                    if (key[0] == '4') this.SendKey("4");
+                    if (key[0] == '5') this.SendKey("5");
+                    if (key[0] == '6') this.SendKey("6");
+                    if (key[0] == '7') this.SendKey("7");
+                    if (key[0] == '8') this.SendKey("8");
+                    if (key[0] == '9') this.SendKey("9");
                 }
                 if (textBox8.Text.Length == 2)
                 {
-                    if (textBox8.Text[1] == '0') SendKeys.Send("{0}");
-                    if (textBox8.Text[1] == '1') SendKeys.Send("{-}");
-                    if (textBox8.Text[1] == '2') SendKeys.Send("{=}");
+                    if (key[1] == '0') this.SendKey("0");
+                    if (key[1] == '1') this.SendKey("-");
+                    if (key[1] == '2') this.SendKey("=");
                 }
+            }
+        }
+
+        private void SendKey(string key)
+        {
+            try
+            {
+                SendKeysCustom.Send(this.handle, key);
+            }
+            catch
+            {
             }
         }
 
@@ -525,6 +464,19 @@ namespace WindowsFormsApplication13
         private void label6_Click(object sender, EventArgs e)
         {
 
-        } 
+        }
+
+        private void onContextClicked(object sender, EventArgs e)
+        {
+            ToolStripItem item = sender as ToolStripItem;
+            this.handle = (int)item.Tag;
+            labelProcessName.Text = item.Text;
+            labelProcessName.ForeColor = Color.Black;
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            watcher.Stop();
+        }
     }
 }
