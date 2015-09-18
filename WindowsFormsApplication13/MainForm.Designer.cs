@@ -40,7 +40,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btnMosttop = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -110,24 +109,12 @@
             // 
             // pictureBox10
             // 
-            this.pictureBox10.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.Без_имени_5;
+            this.pictureBox10.BackgroundImage = global::PrettyClick.Properties.Resources.Без_имени_5;
             this.pictureBox10.Location = new System.Drawing.Point(1041, 1101);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(280, 280);
             this.pictureBox10.TabIndex = 33;
             this.pictureBox10.TabStop = false;
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Location = new System.Drawing.Point(225, 355);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(22, 22);
-            this.button6.TabIndex = 31;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button6_KeyDown);
             // 
             // button5
             // 
@@ -198,7 +185,7 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
             this.label7.Location = new System.Drawing.Point(22, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(274, 33);
+            this.label7.Size = new System.Drawing.Size(219, 33);
             this.label7.TabIndex = 2;
             this.label7.Text = "Выберите кнопки и  задержку между нажатиями на эти кнопки (в мс.)";
             // 
@@ -239,12 +226,12 @@
             this.processControl1.Size = new System.Drawing.Size(223, 251);
             this.processControl1.TabIndex = 38;
             // 
-            // Form2
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.bg11;
+            this.BackgroundImage = global::PrettyClick.Properties.Resources.bg11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(341, 386);
             this.ContextMenuStrip = this.contextMenuStrip1;
@@ -253,7 +240,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnMosttop);
@@ -264,7 +250,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.Name = "Form2";
+            this.Name = "MainForm";
             this.Text = "MY ACP";
             this.TransparencyKey = System.Drawing.Color.DarkSlateGray;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
@@ -291,7 +277,6 @@
         private System.Windows.Forms.Timer CP;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;

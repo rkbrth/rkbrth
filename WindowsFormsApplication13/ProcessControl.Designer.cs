@@ -60,7 +60,7 @@
             // picture4
             // 
             this.picture4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picture4.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.CP1;
+            this.picture4.BackgroundImage = global::PrettyClick.Properties.Resources.CP1;
             this.picture4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picture4.ErrorImage = null;
             this.picture4.Location = new System.Drawing.Point(21, 205);
@@ -73,7 +73,7 @@
             // picture3
             // 
             this.picture3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picture3.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.CP;
+            this.picture3.BackgroundImage = global::PrettyClick.Properties.Resources.CP;
             this.picture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picture3.Location = new System.Drawing.Point(21, 167);
             this.picture3.Name = "picture3";
@@ -85,7 +85,7 @@
             // picture2
             // 
             this.picture2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picture2.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.MP;
+            this.picture2.BackgroundImage = global::PrettyClick.Properties.Resources.MP;
             this.picture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picture2.Location = new System.Drawing.Point(21, 129);
             this.picture2.Name = "picture2";
@@ -97,7 +97,7 @@
             // picture1
             // 
             this.picture1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picture1.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.HP;
+            this.picture1.BackgroundImage = global::PrettyClick.Properties.Resources.HP;
             this.picture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picture1.ErrorImage = null;
             this.picture1.Location = new System.Drawing.Point(21, 91);
@@ -176,7 +176,7 @@
             // btnToggle
             // 
             this.btnToggle.BackColor = System.Drawing.Color.Transparent;
-            this.btnToggle.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.play_circle_outline1;
+            this.btnToggle.BackgroundImage = global::PrettyClick.Properties.Resources.play_circle_outline1;
             this.btnToggle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnToggle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnToggle.FlatAppearance.BorderSize = 0;

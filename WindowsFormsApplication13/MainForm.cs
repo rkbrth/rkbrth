@@ -75,12 +75,12 @@ namespace WindowsFormsApplication13
             {
                 TopMost = false;
                 is_topmost = false;
-                this.btnMosttop.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.pin_off;
+                this.btnMosttop.BackgroundImage = global::PrettyClick.Properties.Resources.pin_off;
             }
             else
             {
                 TopMost = true;
-                this.btnMosttop.BackgroundImage = global::WindowsFormsApplication13.Properties.Resources.pin;
+                this.btnMosttop.BackgroundImage = global::PrettyClick.Properties.Resources.pin;
             }
         }
 

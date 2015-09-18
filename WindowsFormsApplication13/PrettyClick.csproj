@@ -7,8 +7,8 @@
     <ProjectGuid>{0DA76D8D-571C-4341-ADAD-567D45092B09}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication13</RootNamespace>
-    <AssemblyName>WindowsFormsApplication13</AssemblyName>
+    <RootNamespace>PrettyClick</RootNamespace>
+    <AssemblyName>PrettyClick</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1442605614_Lineage.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio">
@@ -218,6 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Lineage_II.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1442605614_Lineage.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

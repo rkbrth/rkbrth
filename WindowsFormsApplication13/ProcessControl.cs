@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApplication13.Properties;
+using PrettyClick.Properties;
 using Utilities;
 
 namespace WindowsFormsApplication13
@@ -101,7 +101,7 @@ namespace WindowsFormsApplication13
                 {
                     this.Invoke(new Action(() =>
                     {
-                        ToolStripItem item = contextProcessSelector.Items.Add(process.StartTime.ToString(), Properties.Resources.Lineage_II, new EventHandler(onContextClicked));
+                        ToolStripItem item = contextProcessSelector.Items.Add(process.StartTime.ToString(), PrettyClick.Properties.Resources.Lineage_II, new EventHandler(onContextClicked));
                         item.Tag = process.Id;
                     }));
                 }

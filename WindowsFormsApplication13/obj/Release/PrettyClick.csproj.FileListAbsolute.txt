@@ -1,0 +1,11 @@
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\bin\Release\PrettyClick.exe.config
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\bin\Release\PrettyClick.exe
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\bin\Release\PrettyClick.pdb
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\WindowsFormsApplication13.MainForm.resources
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\WindowsFormsApplication13.HelpForm.resources
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\WindowsFormsApplication13.SettingsLocationForm.resources
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\WindowsFormsApplication13.ProcessControl.resources
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\PrettyClick.Properties.Resources.resources
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\PrettyClick.csproj.GenerateResource.Cache
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\PrettyClick.exe
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Release\PrettyClick.pdb
