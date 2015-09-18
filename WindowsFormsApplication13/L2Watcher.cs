@@ -14,7 +14,7 @@ using System.Collections.Specialized;
 
 namespace WindowsFormsApplication13
 {
-    class L2Watcher
+    public class L2Watcher
     {
         public event WatcherHandler Add;
         public event WatcherHandler Remove;

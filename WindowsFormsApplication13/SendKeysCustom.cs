@@ -161,5 +161,37 @@ namespace WindowsFormsApplication13
             bool y = PostMessage(handle, (int)WMessages.WM_KEYUP, scanCode, 0);
             
         }
+
+        public static void Send(int process_id, int key)
+        {
+            if (key < 0)
+            {
+                return;
+            }
+
+            IntPtr handle = System.Diagnostics.Process.GetProcessById(process_id).MainWindowHandle;
+            if (handle == null)
+            {
+                throw new Exception("Окно не выбрано");
+            }
+            PostMessage(handle, (int)WMessages.WM_KEYDOWN, key, 0);
+            PostMessage(handle, (int)WMessages.WM_KEYUP, key, 0);
+
+        }
+
+        public static bool tryParse(string key, out int scanCode)
+        {
+            key = key == "-" ? "MINUS" : (key == "=" ? "PLUS" : key);
+            scanCode = -1;
+            try
+            {
+                scanCode = (int)Enum.Parse(typeof(VKeys), "VK_" + key.ToUpper());
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

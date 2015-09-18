@@ -141,3 +141,4 @@ C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Debug\WindowsFo
 C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.Form4.resources
 C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.Properties.Resources.resources
 C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.csproj.GenerateResource.Cache
+C:\Users\Admin\Desktop\PrettyClick\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.ProcessControl.resources
