@@ -12,7 +12,7 @@ using Utilities;
 
 namespace WindowsFormsApplication13
 {
-    public partial class Form2 : Form
+    public partial class MainForm : Form
     {
         // Флаг с состоянием записи и состоянием TopMost
         bool is_writing = false;
@@ -21,9 +21,9 @@ namespace WindowsFormsApplication13
         //   Переменные для перетаскивания формы без рамок
         int for_dragging_X = 0, for_dragging_Y = 0;
         public L2Watcher watcher;
-        Form4 f4 = new Form4();
+        SettingsLocationForm f4 = new SettingsLocationForm();
 
-        public Form2()
+        public MainForm()
         {
             
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication13
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
+            HelpForm form3 = new HelpForm();
             form3.Show();
             this.Hide();
         }

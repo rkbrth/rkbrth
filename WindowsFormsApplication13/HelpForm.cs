@@ -10,29 +10,40 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication13
 {
-    public partial class Form4 : Form
+    public partial class HelpForm : Form
     {
         //   Переменные для перетаскивания формы без рамок
         int for_dragging_X = 0, for_dragging_Y = 0;
 
-        public Form4()
+        // Переменные для таймеров
+        int secret_count = 0;
+        int seconds = 0;
+
+        public HelpForm()
         {
             InitializeComponent();
+            this.ControlBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
         }
 
-        private void Form4_Load(object sender, EventArgs e)
+        private void btnMainmenu_Click(object sender, EventArgs e)
         {
-
+            MainForm form2 = new MainForm();
+            form2.Show();
+            this.Hide();
         }
 
-        private void Form4_MouseUp(object sender, MouseEventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form3_MouseUp(object sender, MouseEventArgs e)
         {
             tmrDragging.Enabled = false;
-
         }
 
-        private void Form4_MouseDown(object sender, MouseEventArgs e)
+        private void Form3_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right || e.Button == MouseButtons.Left)
             {
@@ -41,14 +52,17 @@ namespace WindowsFormsApplication13
             }
         }
 
-        private void tmrDragging_Tick(object sender, EventArgs e)
+        private void tmrDragging_Tick_1(object sender, EventArgs e)
         {
+
             this.Location = new Point(MousePosition.X - for_dragging_X, MousePosition.Y - for_dragging_Y);
+       
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Form3_Load(object sender, EventArgs e)
         {
-            this.Hide();
+
         }
     }
 }
