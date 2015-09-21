@@ -162,5 +162,22 @@ namespace WindowsFormsApplication13
             keys[3].Active = !keys[3].Active;
             this.picture4.BackgroundImage = keys[3].Active ? Resources.CP1 : Resources.CP1_off;
         }
+
+        private void numericInterval_ValueChanged(object sender, EventArgs e)
+        {
+            int index = (int)(sender as TextBox).Tag;
+            keys[index].Interval = (double)(sender as NumericUpDown).Value;
+        }
+
+        private void textHotkey_TextChanged(object sender, EventArgs e)
+        {
+            (sender as TextBox).BackColor = Color.White;
+            string hotkey = (sender as TextBox).Text;
+            int index = (int)(sender as TextBox).Tag;
+            if (!keys[index].setHotkey(hotkey))
+            {
+                (sender as TextBox).BackColor = Color.MistyRose;
+            }
+        }
     }
 }

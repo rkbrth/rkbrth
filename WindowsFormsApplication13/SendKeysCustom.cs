@@ -181,7 +181,7 @@ namespace WindowsFormsApplication13
 
         public static bool tryParse(string key, out int scanCode)
         {
-            key = key == "-" ? "MINUS" : (key == "=" ? "PLUS" : key);
+            key = key == "-" || key == "11" ? "MINUS" : (key == "=" || key == "12" ? "PLUS" : key);
             scanCode = -1;
             try
             {

@@ -131,14 +131,17 @@
             // 
             // textHotkey1
             // 
+            this.textHotkey1.BackColor = System.Drawing.Color.White;
             this.textHotkey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textHotkey1.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textHotkey1.Location = new System.Drawing.Point(68, 95);
             this.textHotkey1.Name = "textHotkey1";
             this.textHotkey1.Size = new System.Drawing.Size(55, 25);
             this.textHotkey1.TabIndex = 23;
+            this.textHotkey1.Tag = "0";
             this.textHotkey1.Text = "F9";
             this.textHotkey1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textHotkey1.TextChanged += new System.EventHandler(this.textHotkey_TextChanged);
             // 
             // textHotkey2
             // 
@@ -148,8 +151,10 @@
             this.textHotkey2.Name = "textHotkey2";
             this.textHotkey2.Size = new System.Drawing.Size(55, 25);
             this.textHotkey2.TabIndex = 24;
+            this.textHotkey2.Tag = "1";
             this.textHotkey2.Text = "F10";
             this.textHotkey2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textHotkey2.TextChanged += new System.EventHandler(this.textHotkey_TextChanged);
             // 
             // textHotkey3
             // 
@@ -159,8 +164,10 @@
             this.textHotkey3.Name = "textHotkey3";
             this.textHotkey3.Size = new System.Drawing.Size(55, 25);
             this.textHotkey3.TabIndex = 25;
+            this.textHotkey3.Tag = "2";
             this.textHotkey3.Text = "F11";
             this.textHotkey3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textHotkey3.TextChanged += new System.EventHandler(this.textHotkey_TextChanged);
             // 
             // textHotkey4
             // 
@@ -170,8 +177,10 @@
             this.textHotkey4.Name = "textHotkey4";
             this.textHotkey4.Size = new System.Drawing.Size(55, 25);
             this.textHotkey4.TabIndex = 26;
+            this.textHotkey4.Tag = "3";
             this.textHotkey4.Text = "=";
             this.textHotkey4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textHotkey4.TextChanged += new System.EventHandler(this.textHotkey_TextChanged);
             // 
             // btnToggle
             // 
@@ -212,11 +221,13 @@
             this.numericInterval1.Name = "numericInterval1";
             this.numericInterval1.Size = new System.Drawing.Size(63, 25);
             this.numericInterval1.TabIndex = 32;
+            this.numericInterval1.Tag = "0";
             this.numericInterval1.Value = new decimal(new int[] {
             9000,
             0,
             0,
             0});
+            this.numericInterval1.ValueChanged += new System.EventHandler(this.numericInterval_ValueChanged);
             // 
             // numericInterval2
             // 
@@ -241,11 +252,13 @@
             this.numericInterval2.Name = "numericInterval2";
             this.numericInterval2.Size = new System.Drawing.Size(63, 25);
             this.numericInterval2.TabIndex = 33;
+            this.numericInterval2.Tag = "1";
             this.numericInterval2.Value = new decimal(new int[] {
             10000,
             0,
             0,
             0});
+            this.numericInterval2.ValueChanged += new System.EventHandler(this.numericInterval_ValueChanged);
             // 
             // numericInterval3
             // 
@@ -270,11 +283,13 @@
             this.numericInterval3.Name = "numericInterval3";
             this.numericInterval3.Size = new System.Drawing.Size(63, 25);
             this.numericInterval3.TabIndex = 34;
+            this.numericInterval3.Tag = "2";
             this.numericInterval3.Value = new decimal(new int[] {
             150,
             0,
             0,
             0});
+            this.numericInterval3.ValueChanged += new System.EventHandler(this.numericInterval_ValueChanged);
             // 
             // numericInterval4
             // 
@@ -299,11 +314,13 @@
             this.numericInterval4.Name = "numericInterval4";
             this.numericInterval4.Size = new System.Drawing.Size(63, 25);
             this.numericInterval4.TabIndex = 35;
+            this.numericInterval4.Tag = "3";
             this.numericInterval4.Value = new decimal(new int[] {
             150,
             0,
             0,
             0});
+            this.numericInterval4.ValueChanged += new System.EventHandler(this.numericInterval_ValueChanged);
             // 
             // labelProcessName
             // 
