@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Timers;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     class AutoKey
     {
@@ -42,9 +43,8 @@ namespace WindowsFormsApplication13
 
         public bool Active;
 
-        private Timer timer;
+        private System.Timers.Timer timer;
         private int _scan_code;
-        private string _hotkey;
         private bool _enabled;
 
         public AutoKey()
@@ -56,7 +56,7 @@ namespace WindowsFormsApplication13
 
         public AutoKey(string hotkey, double interval)
         {
-            this.timer = new Timer();
+            this.timer = new System.Timers.Timer();
             this.timer.Elapsed += timer_Elapsed;
             this.Interval = interval;
             this.setHotkey(hotkey);
@@ -65,14 +65,25 @@ namespace WindowsFormsApplication13
 
         public bool setHotkey(string key)
         {
-            this._hotkey = key;
             return SendKeysCustom.tryParse(key, out _scan_code);
+        }
+
+        public bool setHotkey(Keys key)
+        {
+            _scan_code = (int)key;
+            return true;
         }
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (Active)
-                SendKeysCustom.Send(this.process_id, this._scan_code);
+            try
+            {
+                if (Active)
+                    SendKeysCustom.Send(this.process_id, this._scan_code);
+            }
+            catch
+            {
+            }
         }
     }
 }

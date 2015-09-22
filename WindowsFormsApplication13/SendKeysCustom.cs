@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     class SendKeysCustom
     {
@@ -157,8 +157,8 @@ namespace WindowsFormsApplication13
             {
                 throw new Exception("Укажите корректную клавишу");
             }
-            bool x = PostMessage(handle, (int)WMessages.WM_KEYDOWN, scanCode, 0);
-            bool y = PostMessage(handle, (int)WMessages.WM_KEYUP, scanCode, 0);
+            PostMessage(handle, (int)WMessages.WM_KEYDOWN, scanCode, 0);
+            //PostMessage(handle, (int)WMessages.WM_KEYUP, scanCode, 0);
             
         }
 
@@ -175,7 +175,7 @@ namespace WindowsFormsApplication13
                 throw new Exception("Окно не выбрано");
             }
             PostMessage(handle, (int)WMessages.WM_KEYDOWN, key, 0);
-            PostMessage(handle, (int)WMessages.WM_KEYUP, key, 0);
+            //PostMessage(handle, (int)WMessages.WM_KEYUP, key, 0);
 
         }
 

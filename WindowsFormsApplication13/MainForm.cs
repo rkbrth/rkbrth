@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Utilities;
+using PrettyClick;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     public partial class MainForm : Form
     {
@@ -147,6 +148,12 @@ namespace WindowsFormsApplication13
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             watcher.Stop();
+            if (notifyIcon1 != null)
+            {
+                notifyIcon1.Visible = false;
+                notifyIcon1.Icon = null;
+                notifyIcon1.Dispose();
+            }
         }
     }
 }

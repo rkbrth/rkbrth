@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Collections;
 using System.Collections.Specialized;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     public class L2Watcher
     {

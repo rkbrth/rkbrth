@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication13
+﻿namespace PrettyClick
 {
     partial class MainForm
     {
@@ -49,7 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.processControl1 = new WindowsFormsApplication13.ProcessControl();
+            this.processControl1 = new PrettyClick.ProcessControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -223,7 +223,7 @@
             this.processControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.processControl1.Location = new System.Drawing.Point(18, 98);
             this.processControl1.Name = "processControl1";
-            this.processControl1.Size = new System.Drawing.Size(223, 251);
+            this.processControl1.Size = new System.Drawing.Size(239, 258);
             this.processControl1.TabIndex = 38;
             // 
             // MainForm
@@ -233,7 +233,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.BackgroundImage = global::PrettyClick.Properties.Resources.bg11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(341, 386);
+            this.ClientSize = new System.Drawing.Size(339, 386);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.processControl1);
             this.Controls.Add(this.panel1);
@@ -249,6 +249,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1000, 1000);
             this.Name = "MainForm";
             this.Text = "MY ACP";

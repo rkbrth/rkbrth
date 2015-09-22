@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrettyClick.Properties;
 using Utilities;
+using PrettyClick;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     public partial class ProcessControl : UserControl
     {
@@ -42,17 +43,17 @@ namespace WindowsFormsApplication13
 
         AutoKey[] keys = new AutoKey[4];
         bool _enabled = false;
-        int process_id;
+        int process_id = 0;
         globalKeyboardHook gkh;
 
         public ProcessControl()
         {
             InitializeComponent();
 
-            keys[0] = new AutoKey(textHotkey1.Text, (double)numericInterval1.Value);
-            keys[1] = new AutoKey(textHotkey2.Text, (double)numericInterval2.Value);
-            keys[2] = new AutoKey(textHotkey3.Text, (double)numericInterval3.Value);
-            keys[3] = new AutoKey(textHotkey4.Text, (double)numericInterval4.Value);
+            keys[0] = new AutoKey(labelHotkey1.Text, (double)numericInterval1.Value);
+            keys[1] = new AutoKey(labelHotkey2.Text, (double)numericInterval2.Value);
+            keys[2] = new AutoKey(labelHotkey3.Text, (double)numericInterval3.Value);
+            keys[3] = new AutoKey(labelHotkey4.Text, (double)numericInterval4.Value);
 
             gkh = new globalKeyboardHook();
             this.Disposed += ProcessControl_Disposed;
@@ -60,6 +61,7 @@ namespace WindowsFormsApplication13
             gkh.HookedKeys.Add(Keys.End);
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
 
+            this.btnHelp.Visible = false;
             // CHANGE
             // gkh.HookedKeys.Clear();
             // gkh.HookedKeys.Add(e.KeyCode);
@@ -75,6 +77,27 @@ namespace WindowsFormsApplication13
             btnToggle.PerformClick();
         }
 
+        public void trackLocation()
+        {
+            System.Timers.Timer t = new System.Timers.Timer(1000);
+            t.Elapsed += (a, b) => 
+            {
+                
+                Process p;
+                try
+                {
+                    p = Process.GetProcessById(this.process_id);
+                }
+                catch { return; }
+
+                ScreenCapture sc = new ScreenCapture();
+                var position = sc.getWindowRect(p.MainWindowHandle);
+                var form = this.Parent;
+                form.Invoke(new Action(() => { form.Location = new Point(position.Left + position.Width - form.Width, position.Top); }));
+            };
+            t.Start();
+        }
+
         public void onProcessesAdd(object sender, int updated_item)
         {
             updateContextMenu(sender as L2Watcher);
@@ -86,6 +109,12 @@ namespace WindowsFormsApplication13
             if (this.process_id == updated_item)
             {
                 labelProcessName.ForeColor = Color.Red;
+                this.process_id = 0;
+                this.Invoke(new Action(() =>
+                {
+                    this.btnHelp.Visible = false;
+                }));
+                
             }
         }
 
@@ -101,7 +130,7 @@ namespace WindowsFormsApplication13
                 {
                     this.Invoke(new Action(() =>
                     {
-                        ToolStripItem item = contextProcessSelector.Items.Add(process.StartTime.ToString(), PrettyClick.Properties.Resources.Lineage_II, new EventHandler(onContextClicked));
+                        ToolStripItem item = contextProcessSelector.Items.Add(process.StartTime.ToLongTimeString(), PrettyClick.Properties.Resources.Lineage_II, new EventHandler(onContextClicked));
                         item.Tag = process.Id;
                     }));
                 }
@@ -120,12 +149,22 @@ namespace WindowsFormsApplication13
         {
             ToolStripItem item = sender as ToolStripItem;
             this.process_id = (int)item.Tag;
+            try
+            {
+                Process p = Process.GetProcessById(this.process_id);
+            }
+            catch
+            {
+                return;
+            }
             foreach (AutoKey key in keys)
             {
                 key.process_id = this.process_id;
             }
             labelProcessName.Text = item.Text;
             labelProcessName.ForeColor = Color.Black;
+            btnHelp.Visible = true;
+            trackLocation();
         }
 
         private void ProcessControl_Load(object sender, EventArgs e)
@@ -142,7 +181,8 @@ namespace WindowsFormsApplication13
         private void picture1_Click(object sender, EventArgs e)
         {
             keys[0].Active = !keys[0].Active;
-            this.picture1.BackgroundImage = keys[0].Active ? Resources.HP : Resources.HP_off;
+            //this.picture1.BackgroundImage = keys[0].Active ? Resources.HP : Resources.HP_off;
+            this.picture1.Image = keys[0].Active ? null : Resources.stroke;
         }
 
         private void picture2_Click(object sender, EventArgs e)
@@ -165,19 +205,62 @@ namespace WindowsFormsApplication13
 
         private void numericInterval_ValueChanged(object sender, EventArgs e)
         {
-            int index = (int)(sender as TextBox).Tag;
+            int index;
+            Int32.TryParse((sender as NumericUpDown).Tag.ToString(), out index);
             keys[index].Interval = (double)(sender as NumericUpDown).Value;
         }
 
-        private void textHotkey_TextChanged(object sender, EventArgs e)
+        private void setHotkey(object sender, EventArgs e)
         {
             (sender as TextBox).BackColor = Color.White;
             string hotkey = (sender as TextBox).Text;
-            int index = (int)(sender as TextBox).Tag;
+            int index;
+            Int32.TryParse((sender as TextBox).Tag.ToString(), out index);
             if (!keys[index].setHotkey(hotkey))
             {
                 (sender as TextBox).BackColor = Color.MistyRose;
             }
+        }
+
+        private void labelHotkey_Click(object sender, EventArgs e)
+        {
+            PrettyClick.KeySelect form = new PrettyClick.KeySelect();
+            form.onKeyPress += (code) => 
+            {
+                int index;
+                Int32.TryParse((sender as Label).Tag.ToString(), out index);
+                (sender as Label).Text = code.ToString();
+                if (!keys[index].setHotkey(code))
+                {
+                    (sender as Label).BackColor = Color.MistyRose;
+                }
+            };
+            form.FormClosed += (a, b) => { this.Focus(); };
+            form.TopMost = true;
+            form.ShowDialog();
+            form.Focus();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Process p;
+            try
+            {
+                p = Process.GetProcessById(this.process_id);
+            }
+            catch
+            {
+                return;
+            }
+            PrettyClick.ScreenCapture capture = new PrettyClick.ScreenCapture();
+            PrettyClick.ScreenshotForm form = new PrettyClick.ScreenshotForm();
+            Image screen = capture.CaptureWindow(p.MainWindowHandle);
+            form.BackgroundImage = screen;
+            form.Size = screen.Size;
+            form.Duration = 2;
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(0, 0);
+            form.ShowDialog();
         }
     }
 }

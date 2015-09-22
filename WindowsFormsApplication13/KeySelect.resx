@@ -117,22 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextProcessSelector.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>194, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnHelp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAASJJREFUSEvt
-        1j9KA0EcxfG1sY2FVmksrOzTWVjYSVTEysYiVhaiVh7BGxiIZSB3SOsN9AJaeQYV/3wf7MJjSEjY3d9G
-        MA8+sMzO7GMy+ZctM0fWcIzrnK41FpYN3OMDPwmN6Z7m1JptvCAtTGmO5taSdbxiUtEkmqs1ldOHP/gb
-        DzjM6VpjPkdrKqUFP1MVdJFGY16uNVpbOicoHiYDTIvu+VytLZ0b+MMOMC2653O1tpHoM+3FpwjPCp5R
-        lH6hlnf2rJzDd/uI0GinF3iHFx8hLG2M4YUyQli28Ia0dIhVhEQv7xO88BNXCE0HXqpvLP00hqcHLw49
-        U88lvPgMjeQWXryPRrKJPRP6t+dPZGE7Ts94B43k/xXv4s7ozJeZkSz7BYLKgcdY+O5fAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
 </root>

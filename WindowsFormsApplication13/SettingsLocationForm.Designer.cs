@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication13
+﻿namespace PrettyClick
 {
     partial class SettingsLocationForm
     {

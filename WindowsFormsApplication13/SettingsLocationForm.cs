@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication13
+namespace PrettyClick
 {
     public partial class SettingsLocationForm : Form
     {
